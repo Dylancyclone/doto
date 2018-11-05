@@ -1,8 +1,6 @@
 # Doto
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/12451938491d4b7d97105a35f835e4cf)](https://www.codacy.com/app/declantyson/doto?utm_source=github.com&utm_medium=referral&utm_content=declantyson/doto&utm_campaign=badger)
-
-![Doto](https://github.com/declantyson/doto/raw/master/sample.gif "Doto")
+This is a slightly edited version of [doto by declantyson](http://declantyson.github.io/doto/) that simplifies the log in screen to only include the log in module, the time, and a custom cinemagraph in the background. Other than that, this project functions the same.
 
 [declantyson.github.io/doto/](http://declantyson.github.io/doto/)
 

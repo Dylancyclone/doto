@@ -12,8 +12,7 @@ const endpoint       = 'https://www.reddit.com/r/cinemagraphs/hot.json',
           INCORRECT_ORIENTATION : 'Source is portrait, skipping.',
           DISALLOWED_FORMAT     : 'Source is not appropriate format.',
           SOMETHING_BAD         : 'Sorry, something went wrong.'
-      },
-      dotoBuild = require('./build');
+      };
 
 let retries = 5,
     allowedFormats = ['mp4', 'gifv'];
@@ -30,6 +29,16 @@ const tryDownload = (reason) => {
     } else {
         console.error(reasons.SOMETHING_BAD);
     }
+};
+
+const buildBackgroundsJsFile = () => {
+    fs.readdir('assets/backgrounds', (err, items) => {
+        if(err) console.error(err);
+        let itemsArr = `var backgrounds = ${JSON.stringify(items).replace(/"/g, '\'')};`;
+        fs.writeFile('assets/backgrounds.js', itemsArr, (err) => {
+            if(err) console.error(err);
+        });
+    });
 };
 
 const updateBackground = (endpoint) => {
@@ -65,7 +74,7 @@ const updateBackground = (endpoint) => {
                                 else {
                                     fs.unlink(path, (err) => {
                                         if (err) console.error(err);
-                                        dotoBuild();
+                                        buildBackgroundsJsFile();
                                     });
                                 }
                             });
@@ -85,7 +94,7 @@ const updateBackground = (endpoint) => {
                                 request(source).pipe(fs.createWriteStream(path)).on('close', (err) => {
                                     if(err) console.error(err);
 
-                                    dotoBuild();
+                                    buildBackgroundsJsFile();
                                     console.log('Downloaded ' + source);
                                 });
                             }
@@ -98,7 +107,7 @@ const updateBackground = (endpoint) => {
                             if(err) console.error(err);
 
                             console.log('Downloaded ' + source);
-                            dotoBuild();
+                            buildBackgroundsJsFile();
                         });
                     }
                 }

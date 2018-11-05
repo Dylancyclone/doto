@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "quick_build": "node quick-build.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -21,8 +20,8 @@
   "devDependencies": {},
   "dependencies": {
     "fs": "0.0.1-security",
-    "jsdom": "^11.10.0",
-    "request": "^2.85.0",
+    "jsdom": "^11.2.0",
+    "request": "^2.81.0",
     "videofy-plus": "0.0.3"
   }
 }
